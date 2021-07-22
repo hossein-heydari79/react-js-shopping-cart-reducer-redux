@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useSelector } from 'react'
 import './Menubar.css'
 
-export const Menubar = ({ cardlist }) => {
+export const Menubar = () => {
+
+    const cardlist = useSelector(state => state.cardlist)
+
     return (
         <div className="menu-bar">
             {
