@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useSelector, useDispatch } from 'react'
 import './Modals.css'
 
-export const Modals = ({ show, hide, datamodal, cardlist, cardlistDispatch }) => {
+export const Modals = ({ show, hide }) => {
 
+
+    const datamodal = useSelector(state => state.datamodal)
+    const cardlist = useSelector(state => state.cardlist)
+    const dispatch = useDispatch()
 
     function added() {
 
@@ -13,12 +17,12 @@ export const Modals = ({ show, hide, datamodal, cardlist, cardlistDispatch }) =>
             let index = arr.findIndex((i) => i.id === datamodal.id);
             arr[index].count++;
             // setCardlist(arr);
-            cardlistDispatch({ type: "ADD_CARD_LIST", payload: arr })
+            dispatch({ type: "ADD_CARD_LIST", payload: arr })
             hide();
         }
         else {
             // setCardlist([...cardlist, { id: datamodal.id, url: datamodal.url, description: datamodal.title, price: datamodal.price, count: 1 }])
-            cardlistDispatch({ type: "ADD_CARD_LIST", payload: [...cardlist, { id: datamodal.id, url: datamodal.url, description: datamodal.title, price: datamodal.price, count: 1 }] })
+            dispatch({ type: "ADD_CARD_LIST", payload: [...cardlist, { id: datamodal.id, url: datamodal.url, description: datamodal.title, price: datamodal.price, count: 1 }] })
             hide();
         }
 
