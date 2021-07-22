@@ -1,8 +1,10 @@
-import React from 'react'
+import React. { useSelector, useDispatch } from 'react'
 import './Cardlist.css'
 
-export const Cardlist = ({ id, url, description, price, count, cardlist, cardlistDispatch }) => {
+export const Cardlist = ({ id, url, description, price, count }) => {
 
+    const cardlist = useSelector(state => state.cardlist)
+    const dispatch = useDispatch()
 
     function remove() {
         let index = cardlist.findIndex((item, index) => item.id === id);
@@ -14,8 +16,7 @@ export const Cardlist = ({ id, url, description, price, count, cardlist, cardlis
             arr[index].count--;
         }
 
-        // setCardlist(arr);
-        cardlistDispatch({ type: "ADD_CARD_LIST", payload: arr })
+        dispatch({ type: "ADD_CARD_LIST", payload: arr })
     }
 
 
