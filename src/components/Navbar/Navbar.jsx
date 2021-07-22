@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useSelector, useDispatch } from 'react'
 import './Navbar.css'
 
-export const Navbar = ({ filter, filterDispatch, len }) => {
+export const Navbar = ({ len }) => {
 
+    const filter = useSelector(state => state.filter)
+    const dispatch = useDispatch()
 
     function change(e) {
         // setfilter({ ...filter, [e.target.name]: e.target.value })
-        filterDispatch({ type: "ADD", payload: { ...filter, [e.target.name]: e.target.value } })
+        dispatch({ type: "ADD", payload: { ...filter, [e.target.name]: e.target.value } })
     }
 
 
