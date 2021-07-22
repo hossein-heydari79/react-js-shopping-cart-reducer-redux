@@ -12,21 +12,6 @@ import data from './data/data.js'
 import { useState, useEffect, useReducer } from 'react'
 
 
-function cardlistReducer(cardlist, action) {
-  switch (action.type) {
-    case "ADD_CARD_LIST": {
-      return (
-        action.payload
-      )
-    }
-
-    default:
-      return cardlist
-  }
-}
-
-
-
 function modeReducer(mode, action) {
   switch (action.type) {
     case "TRUE": {
@@ -75,8 +60,6 @@ function App() {
 
   const [json, setJson] = useState(data.sort((a, b) => a.price - b.price));
 
-
-  const [cardlist, cardlistDispatch] = useReducer(cardlistReducer, [])
 
   const [mode, modeDispatch] = useReducer(modeReducer, {
     show: false
