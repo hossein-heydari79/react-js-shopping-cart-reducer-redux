@@ -7,9 +7,9 @@ import { showReducer } from './showReducer'
 import { combineReducers } from 'redux'
 
 export const reducers = combineReducers({
-    cardlistReducer: cardlistReducer,
-    dataModalReducer: dataModalReducer,
-    filterReducer: filterReducer,
-    modeReducer: modeReducer,
-    showReducer: showReducer
+    cardlist: cardlistReducer,
+    dataModal: dataModalReducer,
+    filter: filterReducer,
+    mode: modeReducer,
+    show: showReducer
 })

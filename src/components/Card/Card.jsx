@@ -1,4 +1,5 @@
-import React, { useSelector, useDispatch } from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import './Card.css'
 
 export const Card = ({ id, url, description, price, show, hide }) => {

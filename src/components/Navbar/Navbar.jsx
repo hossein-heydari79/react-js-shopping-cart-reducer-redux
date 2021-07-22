@@ -1,4 +1,5 @@
-import React, { useSelector, useDispatch } from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import './Navbar.css'
 
 export const Navbar = ({ len }) => {

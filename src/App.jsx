@@ -9,7 +9,8 @@ import { Pay } from './components/Pay/Pay'
 import { Form } from './components/Form/Form'
 import { Modals } from './components/Modals/Modals'
 import data from './data/data.js'
-import { useState, useEffect, useReducer, useSelector, useDispatch } from 'react'
+import { useState, useEffect, useReducer } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
@@ -17,6 +18,9 @@ function App() {
 
 
   const cardlist = useSelector(state => state.cardlist)
+  const filter = useSelector(state => state.filter)
+  const show = useSelector(state => state.show)
+  const mode = useSelector(state => state.mode)
   const dispatch = useDispatch()
 
 
@@ -68,7 +72,6 @@ function App() {
 
   return (
     <>
-
 
       {
         show.show && < Modals show={showModal} hide={hideModal} />
