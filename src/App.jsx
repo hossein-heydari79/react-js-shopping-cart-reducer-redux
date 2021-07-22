@@ -14,23 +14,6 @@ import { useState, useEffect, useReducer } from 'react'
 
 
 
-
-function showReducer(show, action) {
-  switch (action.type) {
-    case "TRUE_SHOW": {
-      return (
-        action.payload
-      )
-    }
-    case "FALSE_SHOW":
-      return action.payload
-
-    default:
-      return show
-  }
-}
-
-
 function dataModalReducer(dataModal, action) {
   switch (action.type) {
     case "ADD_DATA_MODAL": {
@@ -49,10 +32,6 @@ function App() {
 
   const [json, setJson] = useState(data.sort((a, b) => a.price - b.price));
 
-
-  const [show, showDispatch] = useReducer(showReducer, {
-    show: false
-  })
 
 
   let showModal = () => {
