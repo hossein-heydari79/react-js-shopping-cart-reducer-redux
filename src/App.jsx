@@ -12,18 +12,7 @@ import data from './data/data.js'
 import { useState, useEffect, useReducer } from 'react'
 
 
-function modeReducer(mode, action) {
-  switch (action.type) {
-    case "TRUE": {
-      return (
-        action.payload
-      )
-    }
 
-    default:
-      return mode
-  }
-}
 
 
 function showReducer(show, action) {
@@ -59,11 +48,6 @@ function dataModalReducer(dataModal, action) {
 function App() {
 
   const [json, setJson] = useState(data.sort((a, b) => a.price - b.price));
-
-
-  const [mode, modeDispatch] = useReducer(modeReducer, {
-    show: false
-  })
 
 
   const [show, showDispatch] = useReducer(showReducer, {
