@@ -15,8 +15,10 @@ import { useState, useEffect, useReducer, useSelector, useDispatch } from 'react
 
 function App() {
 
-  const state = useSelector(state => state.state)
+
+  const cardlist = useSelector(state => state.cardlist)
   const dispatch = useDispatch()
+
 
   const [json, setJson] = useState(data.sort((a, b) => a.price - b.price));
 
@@ -69,7 +71,7 @@ function App() {
 
 
       {
-        show.show && < Modals show={showModal} hide={hideModal} datamodal={dataModal} cardlist={cardlist} cardlistDispatch={cardlistDispatch} />
+        show.show && < Modals show={showModal} hide={hideModal} />
       }
 
       <Header />
@@ -77,25 +79,25 @@ function App() {
       <div className="main">
         <div className="left">
 
-          <Navbar filter={filter} filterDispatch={filterDispatch} len={json.length} />
+          <Navbar len={json.length} />
           <div className="card-section">
             {
               json.map((item, index) => (
-                <Card key={item.id} id={item.id} url={item.url} description={item.description} price={item.price} cardlist={cardlist} cardlistDispatch={cardlistDispatch} show={showModal} hide={hideModal} datamodal={dataModal} dataModalDispatch={dataModalDispatch} />
+                <Card key={item.id} id={item.id} url={item.url} description={item.description} price={item.price} show={showModal} hide={hideModal} />
               ))
             }
           </div>
         </div>
 
         <div className="right">
-          <Menubar cardlist={cardlist} />
+          <Menubar />
           {
             cardlist.map((item) => (
-              <Cardlist key={item.id} id={item.id} url={item.url} description={item.description} price={item.price} count={item.count} cardlist={cardlist} cardlistDispatch={cardlistDispatch} />
+              <Cardlist key={item.id} id={item.id} url={item.url} description={item.description} price={item.price} count={item.count} />
             ))
           }
           {
-            cardlist.length !== 0 && < Pay cardlist={cardlist} mode={mode} modeDispatch={modeDispatch} />
+            cardlist.length !== 0 && < Pay />
           }
 
           {

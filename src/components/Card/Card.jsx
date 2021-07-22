@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useSelector, useDispatch } from 'react'
 import './Card.css'
 
-export const Card = ({ id, url, description, price, cardlist, cardlistDispatch, show, hide, datamodal, dataModalDispatch }) => {
+export const Card = ({ id, url, description, price, show, hide }) => {
+
+    const cardlist = useSelector(state => state.cardlist)
+    const datamodal = useSelector(state => state.datamodal)
+    const dispatch = useDispatch()
+
 
     function add() {
         let item = cardlist.find((i) => i.id === id)
@@ -9,27 +14,17 @@ export const Card = ({ id, url, description, price, cardlist, cardlistDispatch, 
             let arr = [...cardlist];
             let index = arr.findIndex((i) => i.id === id);
             arr[index].count++;
-            // setCardlist(arr);
-            cardlistDispatch({ type: "ADD_CARD_LIST", payload: arr })
+            dispatch({ type: "ADD_CARD_LIST", payload: arr })
         }
         else {
-            // setCardlist([...cardlist, { id: id, url: url, description: description, price: price, count: 1 }])
-            cardlistDispatch({ type: "ADD_CARD_LIST", payload: [...cardlist, { id: id, url: url, description: description, price: price, count: 1 }] })
+            dispatch({ type: "ADD_CARD_LIST", payload: [...cardlist, { id: id, url: url, description: description, price: price, count: 1 }] })
         }
     }
 
 
     function showm() {
         let index = cardlist.findIndex((i) => i.id === id);
-        // setdatamodal({
-        //     url: url,
-        //     id: id,
-        //     title: description,
-        //     des: "This is for all the latest trends, no matter who you are, where you’re from and what you’re up to. Exclusive to ASOS, our universal brand is here for you, and comes in all our fit ranges: ASOS Curve, Tall, Petite and Maternity. Created by us, styled by you.",
-        //     price: price,
-        // })
-
-        dataModalDispatch({
+        dispatch({
             type: "ADD_DATA_MODAL", payload: {
                 url: url,
                 id: id,
