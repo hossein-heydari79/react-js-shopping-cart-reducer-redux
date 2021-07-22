@@ -9,26 +9,14 @@ import { Pay } from './components/Pay/Pay'
 import { Form } from './components/Form/Form'
 import { Modals } from './components/Modals/Modals'
 import data from './data/data.js'
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect, useReducer, useSelector, useDispatch } from 'react'
 
-
-
-
-function dataModalReducer(dataModal, action) {
-  switch (action.type) {
-    case "ADD_DATA_MODAL": {
-      return (
-        action.payload
-      )
-    }
-
-    default:
-      return dataModal
-  }
-}
 
 
 function App() {
+
+  const state = useSelector(state => state.state)
+  const dispatch = useDispatch()
 
   const [json, setJson] = useState(data.sort((a, b) => a.price - b.price));
 
@@ -36,7 +24,7 @@ function App() {
 
   let showModal = () => {
 
-    showDispatch({
+    dispatch({
       type: "TRUE_SHOW", payload: {
         show: true
       }
@@ -44,33 +32,12 @@ function App() {
   }
 
   let hideModal = () => {
-    showDispatch({
+    dispatch({
       type: "FALSE_SHOW", payload: {
         show: false
       }
     })
   }
-
-
-  const [dataModal, dataModalDispatch] = useReducer(dataModalReducer, {
-    url: "",
-    id: "",
-    title: "",
-    des: "",
-    price: "",
-    sizes: []
-  })
-
-  // const [dataModal, setDataModal] = useState({
-  //   url: "",
-  //   id: "",
-  //   title: "",
-  //   des: "",
-  //   price: "",
-  //   sizes: []
-  // })
-
-
 
   useEffect(() => {
 
