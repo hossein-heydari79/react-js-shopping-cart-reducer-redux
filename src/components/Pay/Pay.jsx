@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useSelector, useDispatch } from 'react'
 import './Pay.css'
 
-export const Pay = ({ cardlist, mode, modeDispatch }) => {
+export const Pay = () => {
 
+    const cardlist = useSelector(state => state.cardlist)
+    const mode = useSelector(state => state.mode)
+    const dispatch = useDispatch()
 
     function change() {
         // setmode({
         //     show: true
         // })
 
-        modeDispatch({
+        dispatch({
             type: "TRUE", payload: {
                 show: true
             }
